@@ -1,4 +1,4 @@
-package codigos;
+package tabelas;
 
 public class Data {
     private int dia;

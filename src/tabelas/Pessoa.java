@@ -1,8 +1,10 @@
-package codigos;
+package tabelas;
 
 public abstract class Pessoa {
-    private String nome;
-    private int id;
+    String nome;
+    String login;
+    String senha;
+    int id;
 
     public Pessoa(int id, String nome) {
         this.nome = nome;

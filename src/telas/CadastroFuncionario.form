@@ -81,9 +81,9 @@
                               <Component id="tFCpf" alignment="0" pref="223" max="32767" attributes="0"/>
                               <Component id="tFNome" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="tFTurnoMat" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioTurnoMat" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tFTurnoVes" min="-2" max="-2" attributes="0"/>
+                                  <Component id="radioTurnoVes" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -118,9 +118,9 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tFTurnoMat" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioTurnoMat" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lBTurno" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tFTurnoVes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="radioTurnoVes" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btCadastro" min="-2" pref="29" max="-2" attributes="0"/>
@@ -189,7 +189,7 @@
             <Property name="text" type="java.lang.String" value="RG:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="tFTurnoVes">
+        <Component class="javax.swing.JRadioButton" name="radioTurnoVes">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d1" green="75" red="18" type="rgb"/>
@@ -208,10 +208,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tFTurnoVesActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioTurnoVesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="tFTurnoMat">
+        <Component class="javax.swing.JRadioButton" name="radioTurnoMat">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d1" green="75" red="18" type="rgb"/>
@@ -226,7 +226,7 @@
             <Property name="text" type="java.lang.String" value="Matutino"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tFTurnoMatActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioTurnoMatActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btCadastro">

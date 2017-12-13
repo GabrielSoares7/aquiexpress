@@ -6,10 +6,12 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class Conexao {
-    Connection conexao;
-    String url;
-    String usuario;
-    String senha;
+    
+    private Connection conexao;
+    private String url;
+    private String usuario;
+    private String senha;
+    
     public Conexao() {
         conexao = null;
         url = "jdbc:mysql://localhost/DB_ESTOQUE";
@@ -20,7 +22,18 @@ public class Conexao {
             System.out.println("Conectado");
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Desculpe!\nVocê está desconectado");        
+            JOptionPane.showMessageDialog(null, "Desculpe!\nVocê está desconectado");  
+            ex.printStackTrace();
         }
     }
+
+    public Connection getConexao() {
+        return conexao;
+    }
+
+    public void setConexao(Connection conexao) {
+        this.conexao = conexao;
+    }
+    
+    
 }

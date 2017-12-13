@@ -1,18 +1,20 @@
-package codigos;
+package tabelas;
+
+import tabelas.Pessoa;
 
 public class Funcionario extends Pessoa{
     private String cpf;
     private String rg;
-    private String turno;
+    private int turno;
 
-    public Funcionario(int id, String cpf, String rg, String turno, String nome) {
+    public Funcionario(int id, String cpf, String rg, int turno, String nome) {
         super(id, nome);
         this.cpf = cpf;
         this.rg = rg;
         this.turno = turno;
     }
 
-    public Funcionario(String cpf, String rg, String turno, String nome) {
+    public Funcionario(String cpf, String rg, int turno, String nome) {
         super(nome);
         this.cpf = cpf;
         this.rg = rg;
@@ -35,11 +37,11 @@ public class Funcionario extends Pessoa{
         this.rg = rg;
     }
 
-    public String getTurno() {
+    public int getTurno() {
         return turno;
     }
 
-    public void setTurno(String turno) {
+    public void setTurno(int turno) {
         this.turno = turno;
     }
 }

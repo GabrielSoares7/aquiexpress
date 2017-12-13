@@ -1,5 +1,6 @@
-package codigos;
+package telas;
 
+import codigos.AcaoTela;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -15,6 +16,8 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
         jPanel = new javax.swing.JPanel();
         lbLogo = new javax.swing.JLabel();
         lbLogin = new javax.swing.JLabel();
@@ -26,6 +29,13 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
         btSair = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jList1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastros");
@@ -197,7 +207,9 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
     private javax.swing.JButton btLogin;
     private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbLogin;
     private javax.swing.JLabel lbLogo;
     private javax.swing.JLabel lbSenha;

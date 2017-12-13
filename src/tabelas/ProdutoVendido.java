@@ -1,4 +1,4 @@
-package codigos;
+package tabelas;
 
 public class ProdutoVendido {
     private int proId;

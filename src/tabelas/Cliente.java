@@ -1,4 +1,6 @@
-package codigos;
+package tabelas;
+
+import tabelas.Pessoa;
 
 public class Cliente extends Pessoa{
     private Data nascimento;

@@ -1,4 +1,4 @@
-package codigos;
+package tabelas;
 
 public class Produto {
    private String nome;

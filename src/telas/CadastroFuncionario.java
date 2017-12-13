@@ -1,4 +1,9 @@
-package codigos;
+package telas;
+
+import codigos.AcaoTela;
+import dao.FuncionarioDAO;
+import javax.swing.JOptionPane;
+import tabelas.Funcionario;
 
 public class CadastroFuncionario extends javax.swing.JFrame {
 
@@ -24,8 +29,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         lBTurno = new javax.swing.JLabel();
         lBNome = new javax.swing.JLabel();
         lBRg = new javax.swing.JLabel();
-        tFTurnoVes = new javax.swing.JRadioButton();
-        tFTurnoMat = new javax.swing.JRadioButton();
+        radioTurnoVes = new javax.swing.JRadioButton();
+        radioTurnoMat = new javax.swing.JRadioButton();
         btCadastro = new javax.swing.JButton();
         lbTitulo = new javax.swing.JLabel();
         btVoltar = new javax.swing.JButton();
@@ -66,25 +71,25 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         lBRg.setForeground(new java.awt.Color(254, 254, 254));
         lBRg.setText("RG:");
 
-        tFTurnoVes.setBackground(new java.awt.Color(24, 117, 209));
-        turnoGrupo.add(tFTurnoVes);
-        tFTurnoVes.setForeground(new java.awt.Color(254, 254, 254));
-        tFTurnoVes.setText("Vespertino");
-        tFTurnoVes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        tFTurnoVes.addActionListener(new java.awt.event.ActionListener() {
+        radioTurnoVes.setBackground(new java.awt.Color(24, 117, 209));
+        turnoGrupo.add(radioTurnoVes);
+        radioTurnoVes.setForeground(new java.awt.Color(254, 254, 254));
+        radioTurnoVes.setText("Vespertino");
+        radioTurnoVes.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        radioTurnoVes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tFTurnoVesActionPerformed(evt);
+                radioTurnoVesActionPerformed(evt);
             }
         });
 
-        tFTurnoMat.setBackground(new java.awt.Color(24, 117, 209));
-        turnoGrupo.add(tFTurnoMat);
-        tFTurnoMat.setForeground(new java.awt.Color(254, 254, 254));
-        tFTurnoMat.setSelected(true);
-        tFTurnoMat.setText("Matutino");
-        tFTurnoMat.addActionListener(new java.awt.event.ActionListener() {
+        radioTurnoMat.setBackground(new java.awt.Color(24, 117, 209));
+        turnoGrupo.add(radioTurnoMat);
+        radioTurnoMat.setForeground(new java.awt.Color(254, 254, 254));
+        radioTurnoMat.setSelected(true);
+        radioTurnoMat.setText("Matutino");
+        radioTurnoMat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tFTurnoMatActionPerformed(evt);
+                radioTurnoMatActionPerformed(evt);
             }
         });
 
@@ -152,9 +157,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addComponent(tFCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                             .addComponent(tFNome)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(tFTurnoMat)
+                                .addComponent(radioTurnoMat)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tFTurnoVes))))
+                                .addComponent(radioTurnoVes))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
                         .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -179,9 +184,9 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(lBCpf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tFTurnoMat)
+                    .addComponent(radioTurnoMat)
                     .addComponent(lBTurno)
-                    .addComponent(tFTurnoVes))
+                    .addComponent(radioTurnoVes))
                 .addGap(18, 18, 18)
                 .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 47, Short.MAX_VALUE))
@@ -199,16 +204,31 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
-        System.out.println("Usuário cadastrado");
+        String cpf = tFCpf.getText();
+        String rg = tFRg.getText();
+        String nome = tFNome.getText();
+        int turno;
+        if(radioTurnoMat.isSelected())
+            turno = 1;
+        else 
+            turno = 2;
+        
+        if(cpf.isEmpty() || cpf.equals("   .   .   -  ") || 
+                rg.isEmpty() || rg.equals("   .   .  ") || nome.isEmpty())
+            JOptionPane.showMessageDialog(null, "Preencha todas as informações!");
+        else {
+            FuncionarioDAO fun = new FuncionarioDAO();
+            fun.inserirDados(new Funcionario(cpf, rg, turno, nome));
+        }
     }//GEN-LAST:event_btCadastroActionPerformed
 
-    private void tFTurnoVesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFTurnoVesActionPerformed
+    private void radioTurnoVesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTurnoVesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tFTurnoVesActionPerformed
+    }//GEN-LAST:event_radioTurnoVesActionPerformed
 
-    private void tFTurnoMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFTurnoMatActionPerformed
+    private void radioTurnoMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTurnoMatActionPerformed
        
-    }//GEN-LAST:event_tFTurnoMatActionPerformed
+    }//GEN-LAST:event_radioTurnoMatActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         setVisible(false);
@@ -231,11 +251,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel lBRg;
     private javax.swing.JLabel lBTurno;
     private javax.swing.JLabel lbTitulo;
+    private javax.swing.JRadioButton radioTurnoMat;
+    private javax.swing.JRadioButton radioTurnoVes;
     private javax.swing.JFormattedTextField tFCpf;
     private javax.swing.JTextField tFNome;
     private javax.swing.JFormattedTextField tFRg;
-    private javax.swing.JRadioButton tFTurnoMat;
-    private javax.swing.JRadioButton tFTurnoVes;
     private javax.swing.ButtonGroup turnoGrupo;
     // End of variables declaration//GEN-END:variables
 }

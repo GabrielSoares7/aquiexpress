@@ -1,18 +1,19 @@
-package codigos;
+package tabelas;
 
-public class Telefone {
+
+public class Email {
     private int id;
-    private String telefone;
+    private String endereco;
     private int pesId;
 
-    public Telefone(int id, String telefone, int pesId) {
+    public Email(int id, String endereco, int pesId) {
         this.id = id;
-        this.telefone = telefone;
+        this.endereco = endereco;
         this.pesId = pesId;
     }
 
-    public Telefone(String telefone, int pesId) {
-        this.telefone = telefone;
+    public Email(String endereco, int pesId) {
+        this.endereco = endereco;
         this.pesId = pesId;
     }
 
@@ -32,12 +33,12 @@ public class Telefone {
         this.id = id;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
     
     
