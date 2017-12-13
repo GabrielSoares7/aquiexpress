@@ -7,15 +7,17 @@ public class Funcionario extends Pessoa{
     private String rg;
     private int turno;
 
-    public Funcionario(int id, String cpf, String rg, int turno, String nome) {
-        super(id, nome);
+    public Funcionario(int id, String cpf, String rg, int turno, String nome,
+            String login, String senha) {
+        super(id, nome, login, senha);
         this.cpf = cpf;
         this.rg = rg;
         this.turno = turno;
     }
 
-    public Funcionario(String cpf, String rg, int turno, String nome) {
-        super(nome);
+    public Funcionario(String cpf, String rg, int turno, String nome, 
+            String login, String senha) {
+        super(nome, login, senha);
         this.cpf = cpf;
         this.rg = rg;
         this.turno = turno;

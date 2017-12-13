@@ -3,6 +3,7 @@ package telas;
 import codigos.AcaoTela;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 public class TelaPrincipal extends JFrame implements AcaoTela{
 
@@ -150,11 +151,12 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
 
     private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
         String senha = "MAGASA";
-        String cmp = JOptionPane.showInputDialog("Digite a senha: ");
+        JPasswordField entradaSenha = new JPasswordField();
+        JOptionPane.showMessageDialog(null, entradaSenha, "Digite a senha padrão", 1);
+        String cmp = entradaSenha.getText();
         if(cmp.equals(senha)) {
             setVisible(false);
             CadastroFuncionario cadastroFuncionario = new CadastroFuncionario(this);
-            cadastroFuncionario.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(null, "Acesso Negado!!!");

@@ -18,7 +18,7 @@ public class FuncionarioDAO {
         pessoaDAO.inserirPessoa(funcionario);
         int id = pessoaDAO.retornarUltimoCodigo();
         PreparedStatement stmt = null;
-        String insert = "INSERT INTO TB_FUNCIONARIO (FUN_CPF, FUN_RG, FUN_TURNO,  FUNC_PES_ID)"
+        String insert = "INSERT INTO TB_FUNCIONARIO (FUN_CPF, FUN_RG, FUN_TURNO, FUN_PES_ID)"
                 + " VALUES (?, ?, ?, ?)";
         try {
             stmt = conexao.getConexao().prepareStatement(insert);
@@ -30,8 +30,7 @@ public class FuncionarioDAO {
             stmt.close();
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Desculpe!\nNão foi possível inserir os dados." + ex);
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Desculpe!\nNão foi possível inserir os dados.");
         }
     }
 }

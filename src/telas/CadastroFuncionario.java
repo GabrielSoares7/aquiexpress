@@ -35,6 +35,11 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         lbTitulo = new javax.swing.JLabel();
         btVoltar = new javax.swing.JButton();
         btSair1 = new javax.swing.JButton();
+        lbLogin = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        lbLogin1 = new javax.swing.JLabel();
+        tfLogin = new javax.swing.JTextField();
+        tfSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cadastro Funciónario");
@@ -127,20 +132,18 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
+        lbLogin.setForeground(new java.awt.Color(254, 254, 254));
+        lbLogin.setText("Login: ");
+        lbLogin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        lbLogin1.setForeground(new java.awt.Color(254, 254, 254));
+        lbLogin1.setText("Senha: ");
+        lbLogin1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbTitulo)
-                .addGap(64, 64, 64))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btVoltar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btSair1)
-                .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,20 +153,50 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                                 .addComponent(lBRg, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lBNome))
                             .addComponent(lBCpf)
-                            .addComponent(lBTurno))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tFRg)
-                            .addComponent(tFCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
-                            .addComponent(tFNome)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(radioTurnoMat)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(radioTurnoVes))))
+                            .addComponent(lBTurno)
+                            .addComponent(lbLogin))
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbLogin1)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
-                        .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tfLogin)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(tFRg)
+                                    .addComponent(tFCpf, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
+                                    .addComponent(tFNome)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(radioTurnoMat)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(radioTurnoVes)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(20, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(btVoltar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btSair1))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbTitulo)
+                        .addGap(64, 64, 64))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,18 +220,26 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                     .addComponent(radioTurnoMat)
                     .addComponent(lBTurno)
                     .addComponent(radioTurnoVes))
+                .addGap(20, 20, 20)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbLogin1))
                 .addGap(18, 18, 18)
                 .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 47, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
                     .addComponent(btSair1))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,6 +248,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         String cpf = tFCpf.getText();
         String rg = tFRg.getText();
         String nome = tFNome.getText();
+        String login = tfLogin.getText();
+        String senha = tfSenha.getText();
         int turno;
         if(radioTurnoMat.isSelected())
             turno = 1;
@@ -214,11 +257,14 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             turno = 2;
         
         if(cpf.isEmpty() || cpf.equals("   .   .   -  ") || 
-                rg.isEmpty() || rg.equals("   .   .  ") || nome.isEmpty())
+                rg.isEmpty() || rg.equals("   .   .  ") || nome.isEmpty() 
+                || login.isEmpty())
             JOptionPane.showMessageDialog(null, "Preencha todas as informações!");
         else {
             FuncionarioDAO fun = new FuncionarioDAO();
-            fun.inserirDados(new Funcionario(cpf, rg, turno, nome));
+            fun.inserirDados(new Funcionario(cpf, rg, turno, nome, login, senha));
+            setVisible(false);
+            acaoTela.voltar();
         }
     }//GEN-LAST:event_btCadastroActionPerformed
 
@@ -246,16 +292,21 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     private javax.swing.JButton btSair1;
     private javax.swing.JButton btVoltar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lBCpf;
     private javax.swing.JLabel lBNome;
     private javax.swing.JLabel lBRg;
     private javax.swing.JLabel lBTurno;
+    private javax.swing.JLabel lbLogin;
+    private javax.swing.JLabel lbLogin1;
     private javax.swing.JLabel lbTitulo;
     private javax.swing.JRadioButton radioTurnoMat;
     private javax.swing.JRadioButton radioTurnoVes;
     private javax.swing.JFormattedTextField tFCpf;
     private javax.swing.JTextField tFNome;
     private javax.swing.JFormattedTextField tFRg;
+    private javax.swing.JTextField tfLogin;
+    private javax.swing.JPasswordField tfSenha;
     private javax.swing.ButtonGroup turnoGrupo;
     // End of variables declaration//GEN-END:variables
 }

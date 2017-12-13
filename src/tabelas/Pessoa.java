@@ -1,20 +1,42 @@
 package tabelas;
 
 public abstract class Pessoa {
-    String nome;
-    String login;
-    String senha;
-    int id;
+    private String nome;
+    private String login;
+    private String senha;
+    private int id;
 
-    public Pessoa(int id, String nome) {
+    public Pessoa(String nome, String login, String senha) {
         this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+    }
+
+    public Pessoa(int id, String nome, String login, String senha) {
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
         this.id = id;
     }
 
-    public Pessoa(String nome) {
-        this.nome = nome;
+    public String getLogin() {
+        return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    
+    
     public String getNome() {
         return nome;
     }

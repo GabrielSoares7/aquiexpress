@@ -15,10 +15,12 @@ public class PessoaDAO {
     
     public void inserirPessoa(Pessoa pessoa) {
         PreparedStatement stmt = null;
-        String insert = "INSERT INTO TB_PESSOA (PES_NOME) VALUES (?)";
+        String insert = "INSERT INTO TB_PESSOA (PES_NOME, PES_LOGIN, PES_SENHA) VALUES (?, ?, ?)";
         try {
             stmt = conexao.getConexao().prepareStatement(insert);
             stmt.setString(1, pessoa.getNome());
+            stmt.setString(2, pessoa.getLogin());
+            stmt.setString(3, pessoa.getSenha());
             stmt.execute();
             stmt.close();
         }
