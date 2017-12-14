@@ -46,7 +46,6 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
         lbSenha.setForeground(new java.awt.Color(255, 250, 250));
         lbSenha.setText("Senha");
 
-        tfSenha.setText("123321");
         tfSenha.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(254, 254, 254)));
 
         btLogin.setBackground(new java.awt.Color(245, 127, 23));
@@ -70,7 +69,6 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
             }
         });
 
-        tfLogin.setText("gabrielsoares");
         tfLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btSair.setBackground(new java.awt.Color(24, 117, 209));

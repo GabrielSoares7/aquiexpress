@@ -60,8 +60,8 @@ public class FuncionarioDAO {
     
     public Funcionario carregarInfo(int id) {
         Funcionario funcionario = null;
-        String select = "SELECT * FROM TB_FUNCIONARIO NATURAL JOIN TB_PESSOA"
-                + " WHERE PES_ID = ?";
+        String select = "select * from TB_FUNCIONARIO JOIN TB_PESSOA WHERE FUN_PES_ID = PES_ID"
+                + " AND PES_ID = ?";
         try {
             PreparedStatement stmt = null;
             stmt = conexao.getConexao().prepareStatement(select);
@@ -77,5 +77,24 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Erro ao carregar as informações: " + ex);
         }
         return funcionario;
+    }
+    
+    public void atualizarFuncionario(Funcionario funcionario) {
+        PessoaDAO pessoaDAO = new PessoaDAO();
+        pessoaDAO.atualizarPessoa(funcionario);
+        String update = "UPDATE TB_FUNCIONARIO SET FUN_CPF = ?, FUN_RG = ?, "
+               + "FUN_TURNO = ? WHERE FUN_PES_ID = ?";
+        try {
+           PreparedStatement stmt = conexao.getConexao().prepareStatement(update);
+           stmt.setString(1, funcionario.getCpf());
+           stmt.setString(2, funcionario.getRg());
+           stmt.setInt(3, funcionario.getTurno());
+           stmt.setInt(4, funcionario.getId());
+           stmt.execute();
+           stmt.close();
+        }
+        catch(SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
+        }
     }
 }

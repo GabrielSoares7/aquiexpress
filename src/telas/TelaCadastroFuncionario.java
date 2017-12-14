@@ -58,6 +58,12 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         jPanel1.setToolTipText("");
         jPanel1.setName("Cadastro Funcionarios"); // NOI18N
 
+        tFNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tFNomeActionPerformed(evt);
+            }
+        });
+
         try {
             tFRg.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("***.***.**")));
         } catch (java.text.ParseException ex) {
@@ -293,6 +299,10 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void tFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tFNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tFNomeActionPerformed
 
 
 

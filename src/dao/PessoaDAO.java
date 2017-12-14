@@ -44,4 +44,21 @@ public class PessoaDAO {
         }
         return cod;
     }
+    
+    public void atualizarPessoa(Pessoa pessoa) {
+       String update = "UPDATE TB_PESSOA SET PES_NOME = ?, PES_LOGIN = ?, "
+               + "PES_SENHA = ? WHERE PES_ID = ?";
+       try {
+           PreparedStatement stmt = conexao.getConexao().prepareStatement(update);
+           stmt.setString(1, pessoa.getNome());
+           stmt.setString(2, pessoa.getLogin());
+           stmt.setString(3, pessoa.getSenha());
+           stmt.setInt(4, pessoa.getId());
+           stmt.execute();
+           stmt.close();
+        }
+        catch(SQLException ex) {
+             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
+        }
+    }
 }
