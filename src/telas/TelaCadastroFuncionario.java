@@ -5,12 +5,19 @@ import dao.FuncionarioDAO;
 import javax.swing.JOptionPane;
 import tabelas.Funcionario;
 
-public class CadastroFuncionario extends javax.swing.JFrame {
+public class TelaCadastroFuncionario extends javax.swing.JFrame {
 
     AcaoTela acaoTela;
     
-    public CadastroFuncionario(AcaoTela acaoTela) {
+    public TelaCadastroFuncionario(AcaoTela acaoTela) {
         this.acaoTela = acaoTela;
+        initComponents();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+    
+    public TelaCadastroFuncionario() {
+        this.acaoTela = null;
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
@@ -34,7 +41,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         btCadastro = new javax.swing.JButton();
         lbTitulo = new javax.swing.JLabel();
         btVoltar = new javax.swing.JButton();
-        btSair1 = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         lbLogin = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         lbLogin1 = new javax.swing.JLabel();
@@ -122,13 +129,13 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             }
         });
 
-        btSair1.setBackground(new java.awt.Color(24, 117, 209));
-        btSair1.setForeground(new java.awt.Color(245, 127, 23));
-        btSair1.setText("Fechar");
-        btSair1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        btSair1.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setBackground(new java.awt.Color(24, 117, 209));
+        btSair.setForeground(new java.awt.Color(245, 127, 23));
+        btSair.setText("Fechar");
+        btSair.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btSair1ActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
 
@@ -186,7 +193,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(btVoltar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btSair1))
+                                .addComponent(btSair))
                             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -235,7 +242,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btVoltar)
-                    .addComponent(btSair1))
+                    .addComponent(btSair))
                 .addContainerGap())
         );
 
@@ -264,7 +271,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             FuncionarioDAO fun = new FuncionarioDAO();
             fun.inserirDados(new Funcionario(cpf, rg, turno, nome, login, senha));
             setVisible(false);
-            acaoTela.voltar();
+            if(acaoTela != null)
+                acaoTela.voltar();
         }
     }//GEN-LAST:event_btCadastroActionPerformed
 
@@ -278,18 +286,19 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         setVisible(false);
-        acaoTela.voltar();
+        if(acaoTela != null)
+            acaoTela.voltar();
     }//GEN-LAST:event_btVoltarActionPerformed
 
-    private void btSair1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSair1ActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_btSair1ActionPerformed
+    }//GEN-LAST:event_btSairActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCadastro;
-    private javax.swing.JButton btSair1;
+    public javax.swing.JButton btSair;
     private javax.swing.JButton btVoltar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
