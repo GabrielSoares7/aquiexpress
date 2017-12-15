@@ -325,7 +325,6 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         else {
             FuncionarioDAO fun = new FuncionarioDAO();
             fun.inserirDados(new Funcionario(cpf, rg, turno, nome, login, senha));
-            System.out.println(telefones.size());
             
             PessoaDAO pesDAO = new PessoaDAO();
             int pesId;
@@ -350,7 +349,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_radioTurnoVesActionPerformed
 
     private void radioTurnoMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioTurnoMatActionPerformed
-       
+         
     }//GEN-LAST:event_radioTurnoMatActionPerformed
 
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed

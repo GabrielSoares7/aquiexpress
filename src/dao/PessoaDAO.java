@@ -4,6 +4,8 @@ import codigos.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import tabelas.Pessoa;
 
@@ -58,7 +60,19 @@ public class PessoaDAO {
            stmt.close();
         }
         catch(SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
+        }
+    }
+    
+    public void deletarPessoa(int id) {
+        String delete = "DELETE FROM TB_PESSOA WHERE PES_ID=?";
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(delete);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro enquanto a pessoa era deletada");
         }
     }
 }

@@ -3,6 +3,8 @@ package dao;
 import codigos.Conexao;
 import tabelas.Funcionario;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class FuncionarioDAO {
@@ -30,10 +32,11 @@ public class FuncionarioDAO {
             stmt.close();
         }
         catch(SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Desculpe!\nNão foi possível inserir os dados.");
+            JOptionPane.showMessageDialog(null, "Desculpe!\n"
+                    + "Não foi possível inserir os dados: \n" + ex);
         }
     }
-    
+   
     public int retornarIdLogin(String login, String senha) {
         int id = 1;
         String select = "SELECT PES_ID FROM TB_PESSOA "
@@ -96,7 +99,26 @@ public class FuncionarioDAO {
            stmt.close();
         }
         catch(SQLException ex) {
-             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
         }
     }
+            
+    public void deletarFuncionario(int id) {
+        String delete = "DELETE FROM TB_FUNCIONARIO WHERE FUN_PES_ID = ?";
+        
+        PreparedStatement stmt;
+        try {
+            stmt = conexao.getConexao().prepareStatement(delete);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro enquanto o "
+                    + "arquivo estava sendo deletado: " + ex);
+        }
+        
+        PessoaDAO pessoaDAO = new PessoaDAO();
+        pessoaDAO.deletarPessoa(id);
+        
+    }       
 }

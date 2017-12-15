@@ -69,6 +69,7 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
             }
         });
 
+        tfLogin.setText("gabrielsoares");
         tfLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         btSair.setBackground(new java.awt.Color(24, 117, 209));
@@ -105,24 +106,26 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelLayout.createSequentialGroup()
+                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanelLayout.createSequentialGroup()
+                                        .addComponent(lbLogin)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelLayout.createSequentialGroup()
+                                                .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(btLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(tfLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                                        .addComponent(radioFun)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(radioCliente)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btSair))
+                            .addGroup(jPanelLayout.createSequentialGroup()
                                 .addComponent(lbSenha)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(lbLogin)
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelLayout.createSequentialGroup()
-                                        .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(tfLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                                .addComponent(radioFun)
-                                .addGap(18, 18, 18)
-                                .addComponent(radioCliente)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSair)
+                                .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(10, 10, 10)))
                 .addContainerGap())
         );
@@ -184,6 +187,7 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             if(!tfLogin.getText().isEmpty()) {
                 int id = funcionarioDAO.retornarIdLogin(tfLogin.getText(), tfSenha.getText());
+                System.out.println(id);
                 if(id != 0) {
                     TelaFuncionario telaFuncionario = new TelaFuncionario(id, this);
                     telaFuncionario.setVisible(true);

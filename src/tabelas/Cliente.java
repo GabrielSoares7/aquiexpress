@@ -3,36 +3,25 @@ package tabelas;
 import tabelas.Pessoa;
 
 public class Cliente extends Pessoa{
-    private Data nascimento;
-    private Data cadastro;
+    private String nascimento;
 
-    public Cliente(int id, Data nascimento, Data cadastro, String nome,
+    public Cliente(int id, String nascimento, String nome,
             String login, String senha) {
         super(id, nome, login, senha);
         this.nascimento = nascimento;
-        this.cadastro = cadastro;
     }
 
-    public Cliente(Data nascimento, Data cadastro, String nome, String login,
+    public Cliente(String nascimento, String nome, String login,
             String senha) {
         super(nome, login, senha);
         this.nascimento = nascimento;
-        this.cadastro = cadastro;
     }
 
-    public Data getCadastro() {
-        return cadastro;
-    }
-
-    public void setCadastro(Data cadastro) {
-        this.cadastro = cadastro;
-    }
-
-    public Data getNascimento() {
+    public String getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(Data nascimento) {
+    public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
     }    
 }

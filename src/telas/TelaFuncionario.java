@@ -18,7 +18,9 @@ public class TelaFuncionario extends javax.swing.JFrame {
         
         FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
         funcionario = funcionarioDAO.carregarInfo(id);
-        lbBoasVindas.setText("Bem-vind@ " + funcionario.getNome() + "!");
+        if(funcionario == null)
+            setVisible(false);
+        lbBoasVindas.setText("Bem-vindo(a) " + funcionario.getNome() + "!");
         
         this.acaoTela = acaoTela; 
     }
@@ -28,7 +30,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btCadCliente = new javax.swing.JButton();
         lbBoasVindas = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
@@ -36,12 +38,18 @@ public class TelaFuncionario extends javax.swing.JFrame {
         itemSair = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
         itemEdit = new javax.swing.JMenuItem();
+        itemDel = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(254, 254, 254));
 
-        jButton1.setText("jButton1");
+        btCadCliente.setText("Cadastrar cliente");
+        btCadCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCadClienteActionPerformed(evt);
+            }
+        });
 
         lbBoasVindas.setFont(new java.awt.Font("Ubuntu", 1, 15)); // NOI18N
         lbBoasVindas.setForeground(new java.awt.Color(24, 117, 209));
@@ -52,23 +60,20 @@ public class TelaFuncionario extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbBoasVindas)))
-                .addContainerGap(307, Short.MAX_VALUE))
+                    .addComponent(lbBoasVindas)
+                    .addComponent(btCadCliente))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lbBoasVindas)
-                .addGap(22, 22, 22)
-                .addComponent(jButton1)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btCadCliente)
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         menuFile.setText("File");
@@ -91,7 +96,7 @@ public class TelaFuncionario extends javax.swing.JFrame {
 
         menuBar.add(menuFile);
 
-        menuEditar.setText("Edit");
+        menuEditar.setText("Editar");
 
         itemEdit.setText("Editar dados");
         itemEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +105,14 @@ public class TelaFuncionario extends javax.swing.JFrame {
             }
         });
         menuEditar.add(itemEdit);
+
+        itemDel.setText("Deletar");
+        itemDel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemDelActionPerformed(evt);
+            }
+        });
+        menuEditar.add(itemDel);
 
         menuBar.add(menuEditar);
 
@@ -135,6 +148,18 @@ public class TelaFuncionario extends javax.swing.JFrame {
         telaEditarFuncionario.setVisible(true);
     }//GEN-LAST:event_itemEditActionPerformed
 
+    private void itemDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDelActionPerformed
+        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+        funcionarioDAO.deletarFuncionario(funcionario.getId()
+        );
+        setVisible(false);
+    }//GEN-LAST:event_itemDelActionPerformed
+
+    private void btCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadClienteActionPerformed
+        TelaCadastroCliente cadCliente = new TelaCadastroCliente();
+        cadCliente.setVisible(true);
+    }//GEN-LAST:event_btCadClienteActionPerformed
+
     public static void configurarLookAndFeel() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -162,10 +187,11 @@ public class TelaFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCadCliente;
     private javax.swing.JMenuItem itemCadFun;
+    private javax.swing.JMenuItem itemDel;
     private javax.swing.JMenuItem itemEdit;
     private javax.swing.JMenuItem itemSair;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbBoasVindas;
     private javax.swing.JMenuBar menuBar;
