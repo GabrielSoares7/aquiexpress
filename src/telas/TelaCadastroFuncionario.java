@@ -28,8 +28,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
-        telefones = new ArrayList<>();
-        emails = new ArrayList<>();
+        telefones = new ArrayList<Telefone>();
+        emails = new ArrayList<Email>();
     }
     
     public TelaCadastroFuncionario() {
@@ -37,8 +37,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
-        telefones = new ArrayList<>();
-        emails = new ArrayList<>();
+        telefones = new ArrayList<Telefone>();
+        emails = new ArrayList<Email>();
     }
 
     @SuppressWarnings("unchecked")

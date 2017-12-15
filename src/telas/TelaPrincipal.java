@@ -167,7 +167,8 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
             String cmp = entradaSenha.getText();
             if(cmp.equals(senha)) {
                 setVisible(false);
-                TelaCadastroFuncionario cadastroFuncionario = new TelaCadastroFuncionario(this);
+                TelaCadastroFuncionario cadastroFuncionario 
+                        = new TelaCadastroFuncionario(this);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Acesso Negado!!!", "Alerta", 0);
