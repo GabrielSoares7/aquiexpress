@@ -161,7 +161,7 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
 
     private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
         if(radioFun.isSelected()) {
-            String senha = "MAGASA";
+            String senha = "123";
             JPasswordField entradaSenha = new JPasswordField();
             JOptionPane.showMessageDialog(null, entradaSenha, "Digite a senha padrão", 1);
             String cmp = entradaSenha.getText();
@@ -170,7 +170,7 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
                 TelaCadastroFuncionario cadastroFuncionario = new TelaCadastroFuncionario(this);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Acesso Negado!!!");
+                JOptionPane.showMessageDialog(null, "Acesso Negado!!!", "Alerta", 0);
             }
         }
         else {
@@ -186,6 +186,7 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
                 if(id != 0) {
                     TelaFuncionario telaFuncionario = new TelaFuncionario(id, this);
                     telaFuncionario.setVisible(true);
+                    setVisible(false);
                 }
             }
             else

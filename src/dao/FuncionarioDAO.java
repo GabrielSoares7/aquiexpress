@@ -48,9 +48,10 @@ public class FuncionarioDAO {
                 id = rs.getInt("PES_ID");
             }
             else {
-                JOptionPane.showMessageDialog(null, "Acesso Negado!");
+                JOptionPane.showMessageDialog(null, "Acesso Negado!!!", "Alerta", 0);
                 id = 0;
             }
+            stmt.close();
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao fazer login: \n" + ex);
@@ -72,6 +73,7 @@ public class FuncionarioDAO {
                 rs.getString("FUN_RG"), rs.getInt("FUN_TURNO"), rs.getString("PES_NOME"), 
                         rs.getString("PES_LOGIN"), rs.getString("PES_SENHA"));
             }
+            stmt.close();
         }
         catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar as informações: " + ex);

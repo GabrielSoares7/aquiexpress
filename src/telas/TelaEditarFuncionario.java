@@ -1,21 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package telas;
 
+import codigos.AcaoTela;
 import dao.FuncionarioDAO;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import tabelas.Funcionario;
 
-/**
- *
- * @author gabriel
- */
-public class TelaEditarFuncionario extends javax.swing.JFrame {
+public class TelaEditarFuncionario extends javax.swing.JFrame implements AcaoTela{
     Funcionario funcionario;
+
     public TelaEditarFuncionario(Funcionario funcionario) {
         initComponents();
         this.funcionario = funcionario;
@@ -53,8 +46,6 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
         btAlteraSenha = new javax.swing.JButton();
         lbEditarCadastro = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(24, 117, 209));
         jPanel1.setInheritsPopupMenu(true);
 
@@ -86,10 +77,20 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
         });
 
         btEmailsCadastrados.setText("Emails Cadastrados");
+        btEmailsCadastrados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEmailsCadastradosActionPerformed(evt);
+            }
+        });
 
         btVoltar.setBackground(new java.awt.Color(245, 127, 23));
         btVoltar.setForeground(new java.awt.Color(254, 254, 254));
         btVoltar.setText("Voltar");
+        btVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVoltarActionPerformed(evt);
+            }
+        });
 
         btSalvar.setBackground(new java.awt.Color(245, 127, 23));
         btSalvar.setForeground(new java.awt.Color(254, 254, 254));
@@ -230,6 +231,16 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_btSalvarActionPerformed
 
+    private void btEmailsCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEmailsCadastradosActionPerformed
+        TelaEmail verEmail = new TelaEmail(funcionario.getId(), this);
+        verEmail.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_btEmailsCadastradosActionPerformed
+
+    private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_btVoltarActionPerformed
+
     public static void configurarLookAndFeel() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -271,4 +282,9 @@ public class TelaEditarFuncionario extends javax.swing.JFrame {
     private javax.swing.JTextField tfRg;
     private javax.swing.JLabel tfTurno;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void voltar() {
+        setVisible(true);
+    }
 }
