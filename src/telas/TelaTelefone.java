@@ -1,37 +1,36 @@
 package telas;
 
 import codigos.AcaoTela;
-import dao.EmailDAO;
+import dao.TelefoneDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import tabelas.Email;
+import tabelas.Telefone;
 
-public class TelaEmail extends javax.swing.JFrame {
-    
-    ArrayList <Email> emails;
-    EmailDAO emailDAO;
+public class TelaTelefone extends javax.swing.JFrame {
+
+    ArrayList <Telefone> telefones;
+    TelefoneDAO telefoneDAO;
     int pesId;
     AcaoTela acaoTela;
     
-    public TelaEmail(int pesId, AcaoTela acaoTela) {
+    public TelaTelefone(int pesId, AcaoTela acaoTela) {
         initComponents();
         this.pesId = pesId;
-        emailDAO = new EmailDAO();
+        telefoneDAO = new TelefoneDAO();
         setLocationRelativeTo(null);
         atualizarLista();
         this.acaoTela = acaoTela;
     }
     
     public void atualizarLista() {
-        emails = emailDAO.carregarEnderecosPorPessoa(pesId);
-        String emailVet[] = new String [emails.size()];
-        for(int i = 0; i < emails.size(); i++) {
-            emailVet[i] = emails.get(i).getEndereco();
+        telefones = telefoneDAO.carregarTelefonesPorPessoa(pesId);
+        String emailVet[] = new String [telefones.size()];
+        for(int i = 0; i < telefones.size(); i++) {
+            emailVet[i] = telefones.get(i).getTelefone();
         }
         jList.setListData(emailVet);
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,6 +43,8 @@ public class TelaEmail extends javax.swing.JFrame {
         btVoltar = new javax.swing.JButton();
         btDel = new javax.swing.JButton();
         btAdd = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(254, 254, 254));
 
@@ -136,6 +137,20 @@ public class TelaEmail extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        JTextField entrada = new JTextField();
+        entrada.setText(telefones.get(jList.getSelectedIndex()).getTelefone());
+        JOptionPane.showMessageDialog(this, entrada, "Editar número de telefone", 3);
+        if(entrada.getText() != null) {
+            if(!entrada.getText().isEmpty()) {
+                Telefone telefone = telefones.get(jList.getSelectedIndex());
+                telefone.setTelefone(entrada.getText());
+                telefoneDAO.atualizarTelefone(telefone);
+                atualizarLista();
+            }
+        }
+    }//GEN-LAST:event_btEditarActionPerformed
+
     private void btVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVoltarActionPerformed
         setVisible(false);
         acaoTela.voltar();
@@ -143,34 +158,20 @@ public class TelaEmail extends javax.swing.JFrame {
 
     private void btDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDelActionPerformed
         if(jList.isFocusable()) {
-            emailDAO.deletarEmail(emails.get(jList.getSelectedIndex()).getId());
+            telefoneDAO.deletarTelefone(telefones.get(jList.getSelectedIndex()).getId());
             atualizarLista();
         }
     }//GEN-LAST:event_btDelActionPerformed
 
     private void btAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddActionPerformed
-        String email = JOptionPane.showInputDialog(this, "Digite o endereço: ");
-        if(email != null) {
-            if(!email.isEmpty()) {
-                emailDAO.inserirEmail(pesId, new Email(email, 0));
+        String telefone = JOptionPane.showInputDialog(this, "Digite o telefone: ");
+        if(telefone != null) {
+            if(!telefone.isEmpty()) {
+                telefoneDAO.inserirTelefone(pesId, new Telefone(telefone, 0));
                 atualizarLista();
             }
         }
     }//GEN-LAST:event_btAddActionPerformed
-
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        JTextField entrada = new JTextField();
-        entrada.setText(emails.get(jList.getSelectedIndex()).getEndereco());
-        JOptionPane.showMessageDialog(this, entrada, "Editar endereço de email", 3);
-        if(entrada.getText() != null) {
-            if(!entrada.getText().isEmpty()) {
-                Email email = emails.get(jList.getSelectedIndex());
-                email.setEndereco(entrada.getText());
-                emailDAO.atualizarEmail(email);
-                atualizarLista();
-            }
-        }
-    }//GEN-LAST:event_btEditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;

@@ -199,7 +199,9 @@ public class TelaEditarFuncionario extends javax.swing.JFrame implements AcaoTel
     }// </editor-fold>//GEN-END:initComponents
 
     private void btTelefonesCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTelefonesCadastradosActionPerformed
-        // TODO add your handling code here:
+        TelaTelefone telaTelefone = new TelaTelefone(funcionario.getId(), this);
+        telaTelefone.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_btTelefonesCadastradosActionPerformed
 
     private void btAlteraSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlteraSenhaActionPerformed
