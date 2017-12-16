@@ -1,34 +1,36 @@
 package tabelas;
 
 public class Produto {
-   private String nome;
-   private int qnt;
-   private float preco;
-   private int id;
-   private String imagem;
-
-    public Produto(String nome, int qnt, float preco, String imagem) {
+    private String nome;
+    private int qnt;
+    private float preco;
+    private int id;
+    private int categoria;
+    
+    public Produto(String nome, int qnt, float preco, int categoria) {
         this.nome = nome;
         this.qnt = qnt;
+        this.categoria = categoria;
         this.preco = preco;
-        this.imagem = imagem;
     }
 
-    public Produto(int id, String nome, int qnt, float preco, String imagem) {
+    public Produto(int id, String nome, int qnt, float preco, int categoria) {
         this.nome = nome;
         this.qnt = qnt;
         this.preco = preco;
         this.id = id;
-        this.imagem = imagem;
+        this.categoria = categoria;
     }
 
-    public String getImagem() {
-        return imagem;
+    public int getCategoria() {
+        return categoria;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
     }
+    
+    
 
     public String getNome() {
         return nome;
@@ -62,5 +64,8 @@ public class Produto {
         this.id = id;
     }
    
-   
+    @Override
+    public String toString() {
+        return nome + ", " + "Quant: " + qnt + ", R$" + preco;
+    }
 }
