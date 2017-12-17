@@ -19,7 +19,6 @@ public class Conexao {
         senha ="c74387";
         try {
             conexao = DriverManager.getConnection(url, usuario, senha);
-            System.out.println("Conectado");
         }
         catch(SQLException ex) {
             JOptionPane.showMessageDialog(null, "Desculpe!\nVocê está desconectado");  

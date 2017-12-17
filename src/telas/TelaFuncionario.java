@@ -44,6 +44,7 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
         lbProdCad = new javax.swing.JLabel();
         btDeletar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         menuFile = new javax.swing.JMenu();
         itemCadFun = new javax.swing.JMenuItem();
@@ -51,7 +52,6 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
         itemSair = new javax.swing.JMenuItem();
         menuEditar = new javax.swing.JMenu();
         itemEdit = new javax.swing.JMenuItem();
-        itemDel = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,6 +100,15 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(245, 127, 23));
+        jButton1.setForeground(new java.awt.Color(254, 254, 254));
+        jButton1.setText("Vender");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,19 +117,22 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbBoasVindas)
-                            .addComponent(btCadCliente)
-                            .addComponent(lbProdCad))
-                        .addGap(0, 602, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btCadProduto)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(btEditar, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(btDeletar)))))
+                                .addComponent(btDeletar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbBoasVindas)
+                            .addComponent(lbProdCad)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btCadCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1)))
+                        .addGap(0, 554, Short.MAX_VALUE)))
                 .addGap(4, 4, 4))
         );
         jPanel1Layout.setVerticalGroup(
@@ -129,7 +141,9 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
                 .addContainerGap()
                 .addComponent(lbBoasVindas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btCadCliente)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCadCliente)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbProdCad)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,6 +170,11 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
         menuFile.add(itemCadFun);
 
         itemHistorico.setText("Histórico de vendas");
+        itemHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itemHistoricoActionPerformed(evt);
+            }
+        });
         menuFile.add(itemHistorico);
 
         itemSair.setText("Sair");
@@ -177,14 +196,6 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
             }
         });
         menuEditar.add(itemEdit);
-
-        itemDel.setText("Deletar");
-        itemDel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemDelActionPerformed(evt);
-            }
-        });
-        menuEditar.add(itemDel);
 
         menuBar.add(menuEditar);
 
@@ -222,13 +233,6 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
         telaEditarFuncionario.setVisible(true);
     }//GEN-LAST:event_itemEditActionPerformed
 
-    private void itemDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemDelActionPerformed
-        FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-        funcionarioDAO.deletarFuncionario(funcionario.getId()
-        );
-        setVisible(false);
-    }//GEN-LAST:event_itemDelActionPerformed
-
     private void btCadClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadClienteActionPerformed
         TelaCadastroCliente cadCliente = new TelaCadastroCliente();
         cadCliente.setVisible(true);
@@ -240,17 +244,31 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
     }//GEN-LAST:event_btCadProdutoActionPerformed
 
     private void btDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletarActionPerformed
-        ProdutoDAO produtoDAO = new ProdutoDAO();
-        int cod = produtos.get(jListProdutos.getAnchorSelectionIndex()).getId();
-        produtoDAO.deletarProduto(cod);
-        atualizarLista();
+        try {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            int cod = produtos.get(jListProdutos.getAnchorSelectionIndex()).getId();
+            produtoDAO.deletarProduto(cod);
+            atualizarLista();
+        } catch (ArrayIndexOutOfBoundsException ex){}
     }//GEN-LAST:event_btDeletarActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        int cod = produtos.get(jListProdutos.getAnchorSelectionIndex()).getId();
-        TelaEditarProduto editarProduto = new TelaEditarProduto(this, cod);
-        editarProduto.setVisible(true);
+        try {
+            int cod = produtos.get(jListProdutos.getAnchorSelectionIndex()).getId();
+            TelaEditarProduto editarProduto = new TelaEditarProduto(this, cod);
+            editarProduto.setVisible(true);
+        } catch (ArrayIndexOutOfBoundsException ex){}
     }//GEN-LAST:event_btEditarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        TelaVender telaVender = new TelaVender(funcionario.getId(), this);
+        telaVender.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void itemHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHistoricoActionPerformed
+       TelaHistoricoVendas telaHistorico = new TelaHistoricoVendas(funcionario.getId());
+       telaHistorico.setVisible(true);
+    }//GEN-LAST:event_itemHistoricoActionPerformed
 
     public static void configurarLookAndFeel() {
         /* Set the Nimbus look and feel */
@@ -275,7 +293,6 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
             java.util.logging.Logger.getLogger(TelaFuncionario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
     }
 
     public void atualizarLista() {
@@ -293,10 +310,10 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
     private javax.swing.JButton btDeletar;
     private javax.swing.JButton btEditar;
     private javax.swing.JMenuItem itemCadFun;
-    private javax.swing.JMenuItem itemDel;
     private javax.swing.JMenuItem itemEdit;
     private javax.swing.JMenuItem itemHistorico;
     private javax.swing.JMenuItem itemSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JList<String> jListProdutos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

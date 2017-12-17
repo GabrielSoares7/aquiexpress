@@ -24,4 +24,9 @@ public class Cliente extends Pessoa{
     public void setNascimento(String nascimento) {
         this.nascimento = nascimento;
     }    
+    
+    @Override
+    public String toString() {
+        return getNome();
+    }
 }

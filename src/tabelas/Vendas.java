@@ -4,16 +4,19 @@ public class Vendas {
     private int id;
     private int funPesId;
     private int cliPesId;
+    private String data;
 
-    public Vendas(int id, int funPesId, int cliPesId) {
+    public Vendas(int id, int funPesId, int cliPesId, String data) {
         this.id = id;
         this.funPesId = funPesId;
         this.cliPesId = cliPesId;
+        this.data = data;
     }
 
-    public Vendas(int funPesId, int cliPesId) {
+    public Vendas(int funPesId, int cliPesId, String data) {
         this.funPesId = funPesId;
         this.cliPesId = cliPesId;
+        this.data = data;
     }
 
     public int getCliPesId() {
@@ -39,4 +42,14 @@ public class Vendas {
     public void setFunPesId(int funPesId) {
         this.funPesId = funPesId;
     }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+    
+    
 }

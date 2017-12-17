@@ -218,7 +218,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         String nome = tfNome.getText();
         String nascimento = tfData.getText();
         String login = jLogin.getText();
-        String senha = tfSenha.getText();
+        String senha = jSenha.getText();
         if(!(nome.isEmpty() || nascimento.isEmpty() || login.isEmpty())) {
             Cliente cliente = new Cliente(nascimento, nome, login, senha);
             ClienteDAO clienteDAO = new ClienteDAO();

@@ -1,6 +1,7 @@
 package telas;
 
 import codigos.AcaoTela;
+import dao.ClienteDAO;
 import dao.FuncionarioDAO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -178,7 +179,8 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
             }
         }
         else {
-            ////Cliente
+            JOptionPane.showMessageDialog(null, "Você precisa está logado como "
+                    + "\nfuncionario para cadastrar um cliente!", "Alerta", 0);
         }
     }//GEN-LAST:event_btCadastroActionPerformed
 
@@ -187,10 +189,22 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
             FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
             if(!tfLogin.getText().isEmpty()) {
                 int id = funcionarioDAO.retornarIdLogin(tfLogin.getText(), tfSenha.getText());
-                System.out.println(id);
                 if(id != 0) {
                     TelaFuncionario telaFuncionario = new TelaFuncionario(id, this);
                     telaFuncionario.setVisible(true);
+                    setVisible(false);
+                }
+            }
+            else
+                JOptionPane.showMessageDialog(null,"Digite o login!");
+        }
+        else {
+            ClienteDAO clienteDAO = new ClienteDAO();
+            if(!tfLogin.getText().isEmpty()) {
+                int id = clienteDAO.retornarIdLogin(tfLogin.getText(), tfSenha.getText());
+                if(id != 0) {
+                    TelaCliente telaCliente = new TelaCliente(id, this);
+                    telaCliente.setVisible(true);
                     setVisible(false);
                 }
             }

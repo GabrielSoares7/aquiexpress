@@ -80,7 +80,8 @@ public class ProdutoDAO {
             stmt.execute();
             stmt.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro durante a execução: " + ex);
+            JOptionPane.showMessageDialog(null, "Não é possível deletar este\n"
+                    + " produto do registro,\n pois ele já foi vendido a um cliente!");
         }
     }
     
@@ -95,6 +96,20 @@ public class ProdutoDAO {
             stmt.setInt(3, produto.getQnt());
             stmt.setFloat(4, produto.getPreco());
             stmt.setInt(5, produto.getId());
+            stmt.execute();
+            stmt.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro durante a atualização: " + ex);
+        }
+    }
+    
+    public void atualizarQnt(int id, int qnt) {
+        String update = "UPDATE TB_PRODUTO SET PRO_QNT = ? WHERE PRO_ID = ?";
+        
+        try {
+            PreparedStatement stmt = conexao.getConexao().prepareStatement(update);
+            stmt.setInt(1, qnt);
+            stmt.setInt(2, id);
             stmt.execute();
             stmt.close();
         } catch (SQLException ex) {

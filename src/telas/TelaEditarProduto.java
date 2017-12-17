@@ -35,7 +35,8 @@ public class TelaEditarProduto extends TelaCadastroProdutos {
         for(int i = 0; i < tfPreco.getText().length(); i++) {
             if(tfPreco.getText().charAt(i) == ',') 
                 strPreco += '.';
-            else if (tfPreco.getText().charAt(i) == '1' ||
+            else if (tfPreco.getText().charAt(i) == '.' ||
+                    tfPreco.getText().charAt(i) == '1' ||
                     tfPreco.getText().charAt(i) == '2' ||
                     tfPreco.getText().charAt(i) == '3' ||
                     tfPreco.getText().charAt(i) == '4' ||
@@ -55,6 +56,8 @@ public class TelaEditarProduto extends TelaCadastroProdutos {
             JOptionPane.showMessageDialog(null, "Digite um preco válido");
             return;
         }
+
+        System.out.println(preco + ":"+tfPreco.getText()+":"+strPreco);
         String strQnt = "";
         for(int j = 0; j < tfQuantidade.getText().length(); j++) {
             if(tfQuantidade.getText().charAt(j) == '1' ||

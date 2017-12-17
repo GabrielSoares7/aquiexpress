@@ -39,8 +39,8 @@ public class FuncionarioDAO {
    
     public int retornarIdLogin(String login, String senha) {
         int id = 1;
-        String select = "SELECT PES_ID FROM TB_PESSOA "
-                + "WHERE PES_LOGIN = ? AND PES_SENHA = ?";
+        String select = "SELECT FUN_PES_ID FROM TB_FUNCIONARIO JOIN TB_PESSOA "
+                + "WHERE PES_LOGIN = ? AND PES_SENHA = ? AND FUN_PES_ID = PES_ID";
         try {
             PreparedStatement stmt = null;
             stmt = conexao.getConexao().prepareStatement(select);
@@ -48,7 +48,7 @@ public class FuncionarioDAO {
             stmt.setString(2, senha);
             ResultSet rs = stmt.executeQuery();
             if(rs.last()) {
-                id = rs.getInt("PES_ID");
+                id = rs.getInt("FUN_PES_ID");
             }
             else {
                 JOptionPane.showMessageDialog(null, "Acesso Negado!!!", "Alerta", 0);
@@ -64,7 +64,7 @@ public class FuncionarioDAO {
     
     public Funcionario carregarInfo(int id) {
         Funcionario funcionario = null;
-        String select = "select * from TB_FUNCIONARIO JOIN TB_PESSOA WHERE FUN_PES_ID = PES_ID"
+        String select = "SELECT * FROM TB_FUNCIONARIO JOIN TB_PESSOA WHERE FUN_PES_ID = PES_ID"
                 + " AND PES_ID = ?";
         try {
             PreparedStatement stmt = null;
@@ -102,23 +102,4 @@ public class FuncionarioDAO {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro durante a atualização");
         }
     }
-            
-    public void deletarFuncionario(int id) {
-        String delete = "DELETE FROM TB_FUNCIONARIO WHERE FUN_PES_ID = ?";
-        
-        PreparedStatement stmt;
-        try {
-            stmt = conexao.getConexao().prepareStatement(delete);
-            stmt.setInt(1, id);
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Ocorreu um erro enquanto o "
-                    + "arquivo estava sendo deletado: " + ex);
-        }
-        
-        PessoaDAO pessoaDAO = new PessoaDAO();
-        pessoaDAO.deletarPessoa(id);
-        
-    }       
 }
