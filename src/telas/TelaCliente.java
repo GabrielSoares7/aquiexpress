@@ -37,6 +37,7 @@ public class TelaCliente extends javax.swing.JFrame {
         vendas = vendasDAO.carregarVendasPorCliente(cliId);
         atualizarLista();
     }
+    /* Abaixo contém uma método para atualizar a lista de funcionarios*/
     
     public void atualizarLista() {
         String [] itens = new String[vendas.size()];
