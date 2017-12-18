@@ -20,7 +20,10 @@ import tabelas.ProdutoVendido;
 import tabelas.Vendas;
 
 public class TelaVender extends javax.swing.JFrame {
-
+    /*Abaixo está sendo criado variaveis e arrayList de produto, cliente, produtovendido
+    *Existe também uma variável do tipo float de nome precoTotal;
+    *Abaixo está sendo criado um construtor de nome telaVender onde tem um set para centralizar a  tela; 
+    */
     int codFun;
     AcaoTela acaoTela;
     ArrayList <Produto> produtos; 
@@ -34,7 +37,7 @@ public class TelaVender extends javax.swing.JFrame {
         setResizable(false);
         this.codFun = codFun;
         this.acaoTela = acaoTela;
-        
+        /*Abaixo está sendo criado dois objetos um do tipo ProdutoDAO, e outro do tipo produtos*/
         ProdutoDAO produtoDAO = new ProdutoDAO();
         produtos = produtoDAO.carregarProdutos();
         
