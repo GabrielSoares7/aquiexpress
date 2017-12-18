@@ -8,7 +8,9 @@ import tabelas.Funcionario;
 
 public class TelaEditarFuncionario extends javax.swing.JFrame implements AcaoTela{
     Funcionario funcionario;
-
+    /*Abaixo está sendo criado um método para editar as informações do funcionario;
+    *Tendo em seguida um referenciador que referencia o objeto que foi criado do tipo funcionario;
+    */
     public TelaEditarFuncionario(Funcionario funcionario) {
         initComponents();
         this.funcionario = funcionario;
