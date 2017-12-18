@@ -18,6 +18,7 @@ import tabelas.Funcionario;
 import tabelas.Telefone;
 
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
+    /*Essa tela será responsável por pedir as informações para o cadastro do funcionário */
 
     AcaoTela acaoTela;
     ArrayList <Telefone> telefones;
@@ -33,6 +34,8 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }
     
     public TelaCadastroFuncionario() {
+        /*Contrutor de TelaCadastroFuncionario tem uma linha em que centraliza a tela*/
+        
         this.acaoTela = null;
         initComponents();
         setLocationRelativeTo(null);
@@ -307,13 +310,14 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
+      /*As variáveis abaixo é responsável por inserir as informações do Funcionario*/
         String cpf = tFCpf.getText();
         String rg = tFRg.getText();
         String nome = tFNome.getText();
         String login = tfLogin.getText();
         String senha = tfSenha.getText();
         int turno;
-        if(radioTurnoMat.isSelected())
+        if(radioTurnoMat.isSelected())/*Haverá dois turmos para que o funcionário possa se adequar ao trabalho*/
             turno = 1;
         else 
             turno = 2;
@@ -324,6 +328,7 @@ public class TelaCadastroFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha todas as informações!");
         else {
             FuncionarioDAO fun = new FuncionarioDAO();
+            /*O dados passados acima serão inseridos na classe FuncionarioDAO */
             fun.inserirDados(new Funcionario(cpf, rg, turno, nome, login, senha));
             
             PessoaDAO pesDAO = new PessoaDAO();
