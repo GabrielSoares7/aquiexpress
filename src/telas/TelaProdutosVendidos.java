@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import tabelas.Produto;
 
 public class TelaProdutosVendidos extends javax.swing.JFrame {
-    
+    /*Abaixo está sendo criado um construtor de TelaProdutosVendidos;
+    *Existe também um set para centralizar a tela;
+    *Está sendo criado um objeto do tipo produtoVendidoDAO;
+    *Em seguida está sendo criado um arrayList do tipo produtos;
+    */
     public TelaProdutosVendidos(int vendId) {
         initComponents();
         setLocationRelativeTo(null);
