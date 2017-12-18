@@ -13,7 +13,18 @@ public class TelaTelefone extends javax.swing.JFrame {
     TelefoneDAO telefoneDAO;
     int pesId;
     AcaoTela acaoTela;
-    
+    /*Acima tem um arrayList de Telefone;
+    *Um objeto telefoneDAO;
+    *Uma varável do tipo inteiro e de nomepesId;
+    *E um objeto do tipo AcaoTela;
+    *Abaixo está sendo criado um construtor de nome TelaTelefone que tem como paramentros
+    pesId, e um objeto do tipo acaoTela;
+    *Existe um referenciador para pesId;
+    *um objeto do tipo telefoneDAO;
+    *Um set que centraliza a tela;
+    *Está chamando o método atualizarLista;
+    *Referenciador de acaoTela;
+    */
     public TelaTelefone(int pesId, AcaoTela acaoTela) {
         initComponents();
         this.pesId = pesId;
