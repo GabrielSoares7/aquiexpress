@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import tabelas.Vendas;
 
 public class TelaHistoricoVendas extends javax.swing.JFrame {
-
+    /*Abaixo está sendo criado um construtor na classe TelHistoricoVendas;
+    *Criado também um set para centralizar a tela;
+    * E um objeto do tipo VendasDAO;
+    *Em seguida está sendo criado um arrayList do tipo vendas;
+    */
     public TelaHistoricoVendas(int idFun) {
         initComponents();
         setLocationRelativeTo(null);
