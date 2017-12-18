@@ -12,12 +12,14 @@ import tabelas.Email;
 
 public class EmailDAO {
     Conexao conexao;
-    
+ /*Essa classe tem como objetivo receber os e-mails tanto do funcionario quanto do cliente*/   
     public EmailDAO() {
+      
         conexao = new Conexao();
     }
     
     public void inserirEmails(int pesId, ArrayList<Email> emails) {
+        /* Será inserido em um arrayList os e-mails dos funcionários e clientes*/
         String insert = "INSERT INTO TB_EMAIL (EMAIL_ENDERECO, EMAIL_PES_ID) VALUES (?, ?)";
         for(Email email: emails) {
             try {
