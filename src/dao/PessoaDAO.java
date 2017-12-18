@@ -14,6 +14,7 @@ public class PessoaDAO {
     public PessoaDAO() {
         conexao = new Conexao();
     }
+    /* Essa classe foi criada com objetivo de inserir dados na tabela tb_pessoa*/
     
     public void inserirPessoa(Pessoa pessoa) {
         PreparedStatement stmt = null;
