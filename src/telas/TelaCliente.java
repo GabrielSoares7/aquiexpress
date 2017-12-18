@@ -11,7 +11,10 @@ import tabelas.Funcionario;
 import tabelas.Vendas;
 
 public class TelaCliente extends javax.swing.JFrame {
-
+    /*Abaixo tem um objeto sendo criado do tipo acaoTela;]
+    *Existe também um arrayList do tipo vendas;
+    *Há também um objeto do tipo vendasDAO;
+    */
     AcaoTela acaoTela;
     int cliId;
     ArrayList <Vendas> vendas;
