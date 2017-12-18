@@ -16,6 +16,7 @@ public class VendasDAO {
     public VendasDAO () {
         this.conexao = new Conexao();
     }
+    /*Essa classe tem como foco principal inserir dados na tb_vendas no banco de dados para que possa ser mostrado posteriormente no projeto*/
     
     public boolean inserirVenda(Vendas venda) {
         String insert = "INSERT INTO TB_VENDAS (VEND_FUN_PES_ID, VEND_CLI_PES_ID, VEND_DATA)"
