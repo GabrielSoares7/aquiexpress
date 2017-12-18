@@ -6,7 +6,10 @@ public class Produto {
     private float preco;
     private int id;
     private int categoria;
-    
+    /* Classe com o objetivo de passar as variáveis que estão 
+    *tanto no banco quanto no projeto.
+    *Aqui estão resentados, e  inseridos também construtores e métodos getters e setters
+    */
     public Produto(String nome, int qnt, float preco, int categoria) {
         this.nome = nome;
         this.qnt = qnt;
