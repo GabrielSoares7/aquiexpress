@@ -6,7 +6,10 @@ public class Funcionario extends Pessoa{
     private String cpf;
     private String rg;
     private int turno;
-
+    /* Classe com o objetivo de passar as variáveis que estão 
+    *tanto no banco quanto no projeto.
+    *Aqui estão resentados, e  inseridos também construtores e métodos getters e setters
+    */
     public Funcionario(int id, String cpf, String rg, int turno, String nome,
             String login, String senha) {
         super(id, nome, login, senha);
