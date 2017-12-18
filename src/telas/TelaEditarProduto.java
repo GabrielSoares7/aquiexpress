@@ -9,7 +9,10 @@ public class TelaEditarProduto extends TelaCadastroProdutos {
     
     Produto produto;
     ProdutoDAO produtoDAO;
-    
+    /*Abaixo está sendo criado um método do de nome TelaEditarProduto onde está sendo criado um objeto do tipo acaoTela 
+    e um uma variável do tipo id;
+    *Logo ápos está sendo criado uma objeto do tipo produtoDAO;
+    */
     public TelaEditarProduto(AcaoTela acaoTela, int id) {
         super(acaoTela);
         
@@ -28,6 +31,7 @@ public class TelaEditarProduto extends TelaCadastroProdutos {
     }
     
     @Override
+    /*Abaixo o usuario poderá apenas digitar números*/
     public void salvar() {                                            
         String nome = tfNome.getText();
         
