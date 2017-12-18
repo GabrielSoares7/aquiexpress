@@ -17,14 +17,15 @@ import tabelas.Email;
 import tabelas.Telefone;
 
 public class TelaCadastroCliente extends javax.swing.JFrame {
-
+    /*Abaixo será informado através de dois arrayLists o e-mails e telefones*/
     ArrayList <Email> emails;
     ArrayList <Telefone> telefones;
     
     public TelaCadastroCliente() {
+        /* Existe neste método um set que irá centralizar a tela*/
         initComponents();
         setLocationRelativeTo(null);
-        
+        /*Está sendo criado um arrayList do tipo email e outro do tipo Telefone*/
         emails = new ArrayList <Email>();
         telefones = new ArrayList<Telefone>();
     }
@@ -215,6 +216,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jSenhaActionPerformed
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
+        /*Abaixo estão variáveis que serão devidamente inseridas para que hajá o cadastramento do Cliente*/
         String nome = tfNome.getText();
         String nascimento = tfData.getText();
         String login = jLogin.getText();
