@@ -5,7 +5,10 @@ public abstract class Pessoa {
     private String login;
     private String senha;
     private int id;
-
+    /* Classe com o objetivo de passar as variáveis que estão 
+    *tanto no banco quanto no projeto.
+    *Aqui estão resentados, e  inseridos também construtores e métodos getters e setters
+    */
     public Pessoa(String nome, String login, String senha) {
         this.nome = nome;
         this.login = login;
