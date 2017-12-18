@@ -13,7 +13,7 @@ public class ProdutoDAO {
     public ProdutoDAO() {
         this.conexao = new Conexao();
     }
-    
+    /*Essa classe foi criada no intuito de inserir dados na tabela tb_produto*/
     public void inserirProduto(Produto produto) {
         String insert = "INSERT INTO TB_PRODUTO (PRO_NOME,PRO_QNT, PRO_CATEGORIA,"
                 + " PRO_PRECO) VALUES (?, ?, ?, ?)";
