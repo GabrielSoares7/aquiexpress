@@ -8,12 +8,23 @@ import javax.swing.JTextField;
 import tabelas.Email;
 
 public class TelaEmail extends javax.swing.JFrame {
-    
+    /*Abaixo está sendo criado um arrayList para email;
+    *Um objeto foi criado do tipo emailDAO;
+    *uma variável foi criada do tipo pesId;
+    *Um objeto do tipo acaoTela;
+    */
     ArrayList <Email> emails;
     EmailDAO emailDAO;
     int pesId;
     AcaoTela acaoTela;
-    
+    /*Abaixo existe um método de nome TelaEmail que tem como parametros
+    pesId do tipo int, e um objeto do tipo acaoTela;
+    *Visto que também foi criado um referenciador que está referenciando um antigo pesId com 
+    o criado na classe;
+    *Foi criado um set para centralizar a tela;
+    *Está chamndo o método atualizar a lista após isso;
+    *Existe e seguida um referenciador que está referenciando o novo acaoTela criado como paramentro do método TelaEmail
+    */
     public TelaEmail(int pesId, AcaoTela acaoTela) {
         initComponents();
         this.pesId = pesId;
@@ -22,7 +33,6 @@ public class TelaEmail extends javax.swing.JFrame {
         atualizarLista();
         this.acaoTela = acaoTela;
     }
-    
     public void atualizarLista() {
         emails = emailDAO.carregarEnderecosPorPessoa(pesId);
         String emailVet[] = new String [emails.size()];
