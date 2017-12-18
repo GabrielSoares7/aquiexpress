@@ -13,17 +13,25 @@ import tabelas.Cliente;
 public class ClienteDAO {
     Conexao conexao;
     
+    /*
+    * Classe que gerencia a tabela cliente
+    */
+    
     public ClienteDAO() {
         this.conexao = new Conexao();
     }
     
     public void inserirCliente(Cliente cliente) {
+        // Método que insere um cliente na base de dados
         PessoaDAO pessoaDAO = new PessoaDAO();
         pessoaDAO.inserirPessoa(cliente);
         cliente.setId(pessoaDAO.retornarUltimoCodigo());
         String insert = "INSERT INTO TB_CLIENTE (CLI_PES_ID, CLI_DATA_NASCIMENTO) VALUES (?, ?)";
+        /*Uma variável do tipo String onde vai pega as informações que o úsuario passar e colocar no data base
+        */
         try {
             PreparedStatement stmt = conexao.getConexao().prepareStatement(insert);
+            /*Para inserir de forma mais segura no banco de dados*/
             stmt.setInt(1, cliente.getId());
             stmt.setString(2,cliente.getNascimento() );
             stmt.execute();
@@ -36,8 +44,10 @@ public class ClienteDAO {
     }
     
     public ArrayList<Cliente> retornarClientes() {
+        /*Método para adicionar clientes na tabela*/
+        
         ArrayList<Cliente> clientes = new ArrayList<>();
-        String select = "SELECT * FROM TB_CLIENTE JOIN TB_PESSOA "
+        String select = "SELECT * FROM TB_CLIENTE JOIN TB_PESSOA "//
                 + "WHERE CLI_PES_ID = PES_ID";
         try {
             PreparedStatement stmt = conexao.getConexao().prepareStatement(select);
@@ -57,9 +67,10 @@ public class ClienteDAO {
     }
     
     public Cliente retornarCliente(int id) {
+        /*Método para retornar os nomes dos clientes*/
         Cliente cliente = null;
         String select = "SELECT * FROM TB_CLIENTE JOIN TB_PESSOA "
-                + "WHERE CLI_PES_ID = PES_ID AND CLI_PES_ID = ?";
+                + "WHERE CLI_PES_ID = PES_ID AND CLI_PES_ID = ?";//Para receber o nome que o usuário passou as informações no caso ira mostrar o nome dos clientes
         try {
             PreparedStatement stmt = conexao.getConexao().prepareStatement(select);
             stmt.setInt(1, id);
@@ -77,9 +88,11 @@ public class ClienteDAO {
     }
     
     public int retornarIdLogin(String login, String senha) {
+        /*Método para retornar o IdLogin */
         int id = 1;
         String select = "SELECT CLI_PES_ID FROM TB_CLIENTE JOIN TB_PESSOA "
                 + "WHERE PES_LOGIN = ? AND PES_SENHA = ? AND CLI_PES_ID = PES_ID";
+        /*Vai mostrar a tabela id da pessoa e inserir na tabela pessoa login senha */
         try {
             PreparedStatement stmt = null;
             stmt = conexao.getConexao().prepareStatement(select);
