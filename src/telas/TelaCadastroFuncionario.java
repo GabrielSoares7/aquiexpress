@@ -18,13 +18,14 @@ import tabelas.Funcionario;
 import tabelas.Telefone;
 
 public class TelaCadastroFuncionario extends javax.swing.JFrame {
-    /*Essa tela será responsável por pedir as informações para o cadastro do funcionário */
+   /*Abaixo será mostrado uma lista de emails e telefones em arraysLists diferentes*/
 
     AcaoTela acaoTela;
     ArrayList <Telefone> telefones;
     ArrayList <Email> emails;
     
     public TelaCadastroFuncionario(AcaoTela acaoTela) {
+        /*Referenciador da tabela acaoTela e uma set que irá centralizar a tela*/
         this.acaoTela = acaoTela;
         initComponents();
         setLocationRelativeTo(null);
