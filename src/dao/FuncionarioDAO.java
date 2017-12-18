@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class FuncionarioDAO {
     
     Conexao conexao;
-    
+    /*Essa classe foi criada com o objetivo de inserir as dados na tabela Funcionário */
     public FuncionarioDAO () {
         conexao = new Conexao();
     }
