@@ -13,7 +13,10 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
     Funcionario funcionario;
     AcaoTela acaoTela;
     ArrayList <Produto> produtos;
-    
+    /*Abaaixo está sendo criado um contrutos de TelaFuncionario que tem como paramentros id
+    e um objeto do tipo acaoTela;
+    *Existe um set para centralizar a tela
+    */
     public TelaFuncionario(int id, AcaoTela acaoTela) {
         configurarLookAndFeel();
         initComponents();
