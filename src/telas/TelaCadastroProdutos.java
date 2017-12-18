@@ -5,14 +5,17 @@ import dao.ProdutoDAO;
 import javax.swing.JOptionPane;
 import tabelas.Produto;
 public class TelaCadastroProdutos extends javax.swing.JFrame {
-
+/*Essa tela como objetivo pedir as informações do produto para que seja devidamente cadastrado.
+*Está inserido também um set que irá centralizar a tela.
+*Existe também um referenciador que está referenciando a acaoTela para que a tela seja executada
+*/
     AcaoTela acaoTela;
     public TelaCadastroProdutos(AcaoTela acaoTela) {
         initComponents();
         setLocationRelativeTo (null);
         this.acaoTela = acaoTela;
     }
-
+    /*O campo só aceita valores númericos*/
     public boolean temValorNumerico(String str) {
         boolean b = false;
         for(int i = 0; i < str.length(); i++) {
@@ -33,7 +36,7 @@ public class TelaCadastroProdutos extends javax.swing.JFrame {
         
         return b;
     }
-    
+    /*O usuario só irá poder digitar os números abaixo*/
     public void salvar() {
         String nome = tfNome.getText();
         
