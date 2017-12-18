@@ -5,7 +5,10 @@ public class Vendas {
     private int funPesId;
     private int cliPesId;
     private String data;
-
+    /* Classe com o objetivo de passar as variáveis que estão 
+    *tanto no banco quanto no projeto.
+    *Aqui estão resentados, e  inseridos também construtores e métodos getters e setters
+    */
     public Vendas(int id, int funPesId, int cliPesId, String data) {
         this.id = id;
         this.funPesId = funPesId;
