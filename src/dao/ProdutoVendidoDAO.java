@@ -15,7 +15,7 @@ public class ProdutoVendidoDAO {
     public ProdutoVendidoDAO() {
         conexao = new Conexao();
     }
-    
+    /*Essa classe tem como objetivo inserir dados na tabela tb_produtos_vendidos*/
     public void inserirProdutoVendido(int proId, int vendId, float preco) {
         String insert = "INSERT INTO TB_PRODUTO_VENDIDO (PV_PRO_ID, PV_VEND_ID, PV_VEND_PRECO) "
                 + "VALUES (?,?,?)";
