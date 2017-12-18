@@ -13,7 +13,7 @@ public class TelefoneDAO {
     Conexao conexao;
     public TelefoneDAO() {
         conexao = new Conexao();
-    }
+    /*Essa classe foi criada no intuito de inserir os telefones tanto dos clientes quanto dos funcionarios*/
     
     public void inserirTelefones(int pesId, ArrayList<Telefone> telefones) {
         for(Telefone telefone : telefones) {
