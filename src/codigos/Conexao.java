@@ -17,7 +17,7 @@ public class Conexao {//nome da classe para fazer a integração com o banco
         conexao = null;
         url = "jdbc:mysql://localhost/DB_ESTOQUE";//Nome da base de dados
         usuario = "root";//Nome do usuario padrão entretanto pode ser alterado de acordo com a vontade do usuario
-        senha ="c74387";//senha do usuario
+        senha ="";//senha do usuario
         try {//Estamos utilizando o try porque estamos vamos converter os dados inseridos aqui para ser transportado para o banco de dados
             conexao = DriverManager.getConnection(url, usuario, senha);// ira abrir uma conexão com os dados passados acima
         }
