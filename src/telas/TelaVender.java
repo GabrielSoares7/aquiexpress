@@ -1,10 +1,11 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.ClienteDAO;
 import dao.ProdutoDAO;
 import dao.ProdutoVendidoDAO;
 import dao.VendasDAO;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -35,34 +36,34 @@ public class TelaVender extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setResizable(false);
+        setVisible(true);
         this.codFun = codFun;
         this.acaoTela = acaoTela;
         /*Abaixo está sendo criado dois objetos um do tipo ProdutoDAO, e outro do tipo produtos*/
         ProdutoDAO produtoDAO = new ProdutoDAO();
         produtos = produtoDAO.carregarProdutos();
         
-        ClienteDAO clienteDAO = new ClienteDAO();
-        clientes = clienteDAO.retornarClientes();
+        clientes = new ClienteDAO().retornarClientes();
         if(clientes.isEmpty())  {
             JOptionPane.showMessageDialog(null, "Só é possível vender se existir"
                     + " um cliente cadastrado");
-            setVisible(false);
+            fechar();
         }
         comboCliente.setModel(new DefaultComboBoxModel<>(
                 gerarVetor(clientes)));
         
         produtosVendidos = new ArrayList<ProdutoVendido>();
         atualizarLista();
-        if(clientes.isEmpty())  {
-            JOptionPane.showMessageDialog(null, "Só é possível vender se existir"
-                    + " um cliente cadastrado");
-            btVender.setVisible(false);
-        }
         if(produtos.isEmpty())  {
             JOptionPane.showMessageDialog(null, "Só é possível vender se existir"
                     + " um produto cadastrado");
-            btVender.setVisible(false);
+            fechar();
         }
+    }
+    
+    public void fechar() {
+        acaoTela.voltar();
+        dispose();
     }
     
     public String[] gerarVetor (ArrayList array) {
@@ -95,6 +96,8 @@ public class TelaVender extends javax.swing.JFrame {
         btDel = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         lbTotal = new javax.swing.JLabel();
+        campoPesquisaCliente = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(254, 254, 254));
 
@@ -139,6 +142,16 @@ public class TelaVender extends javax.swing.JFrame {
         lbTotal.setForeground(new java.awt.Color(24, 117, 209));
         lbTotal.setText("Total: R$ 0.00");
 
+        campoPesquisaCliente.setToolTipText("");
+        campoPesquisaCliente.setName(""); // NOI18N
+        campoPesquisaCliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoPesquisaClienteKeyPressed(evt);
+            }
+        });
+
+        jLabel1.setText("Pesquisar cliente...");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,42 +163,54 @@ public class TelaVender extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btVender))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbVender)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbTotal))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbCliente)
+                        .addGap(33, 33, 33)
+                        .addComponent(jSeparator2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbVender)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 185, Short.MAX_VALUE)
+                                .addComponent(lbTotal))
+                            .addComponent(campoPesquisaCliente)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btAdd)
                                     .addComponent(btDel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lbCliente)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbVender)
                     .addComponent(lbTotal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbCliente)
                     .addComponent(comboCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(campoPesquisaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btAdd)
@@ -201,11 +226,11 @@ public class TelaVender extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -282,11 +307,25 @@ public class TelaVender extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btVenderActionPerformed
 
+    private void campoPesquisaClienteKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisaClienteKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER && !campoPesquisaCliente.getText().isEmpty()) {
+            String nome = campoPesquisaCliente.getText();
+            for(int i = 0; i < clientes.size(); i++) {
+                if(clientes.get(i).getNome().toLowerCase().contains(nome.toLowerCase())) {
+                    comboCliente.setSelectedIndex(i);
+                    break;
+                }
+            }
+        }
+    }//GEN-LAST:event_campoPesquisaClienteKeyPressed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdd;
     private javax.swing.JButton btDel;
     private javax.swing.JButton btVender;
+    private javax.swing.JTextField campoPesquisaCliente;
     private javax.swing.JComboBox<String> comboCliente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

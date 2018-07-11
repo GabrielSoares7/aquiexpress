@@ -1,6 +1,6 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.FuncionarioDAO;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;

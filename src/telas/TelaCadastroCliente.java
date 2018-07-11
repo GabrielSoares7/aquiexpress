@@ -25,6 +25,7 @@ public class TelaCadastroCliente extends javax.swing.JFrame {
         /* Existe neste método um set que irá centralizar a tela*/
         initComponents();
         setLocationRelativeTo(null);
+        setVisible(true);
         /*Está sendo criado um arrayList do tipo email e outro do tipo Telefone*/
         emails = new ArrayList <Email>();
         telefones = new ArrayList<Telefone>();

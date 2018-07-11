@@ -1,4 +1,4 @@
-package codigos;
+package outros;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

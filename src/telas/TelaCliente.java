@@ -1,6 +1,6 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.ClienteDAO;
 import dao.FuncionarioDAO;
 import dao.VendasDAO;

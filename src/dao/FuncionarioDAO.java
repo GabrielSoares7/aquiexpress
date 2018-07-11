@@ -1,6 +1,6 @@
 package dao;
 
-import codigos.Conexao;
+import outros.Conexao;
 import tabelas.Funcionario;
 import java.sql.*;
 import java.util.logging.Level;

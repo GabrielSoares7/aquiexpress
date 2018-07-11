@@ -1,6 +1,6 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.ProdutoDAO;
 import javax.swing.JOptionPane;
 import tabelas.Produto;

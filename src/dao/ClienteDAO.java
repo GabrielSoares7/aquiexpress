@@ -1,6 +1,6 @@
 package dao;
 
-import codigos.Conexao;
+import outros.Conexao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +48,7 @@ public class ClienteDAO {
         
         ArrayList<Cliente> clientes = new ArrayList<>();
         String select = "SELECT * FROM TB_CLIENTE JOIN TB_PESSOA "//
-                + "WHERE CLI_PES_ID = PES_ID";
+                + "WHERE CLI_PES_ID = PES_ID ORDER BY PES_NOME";
         try {
             PreparedStatement stmt = conexao.getConexao().prepareStatement(select);
             ResultSet rs = stmt.executeQuery();

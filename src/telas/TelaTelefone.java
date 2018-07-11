@@ -1,6 +1,6 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.TelefoneDAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;

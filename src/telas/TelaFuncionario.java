@@ -1,6 +1,6 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.FuncionarioDAO;
 import dao.ProdutoDAO;
 import java.util.ArrayList;
@@ -265,7 +265,7 @@ public class TelaFuncionario extends javax.swing.JFrame implements AcaoTela{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         TelaVender telaVender = new TelaVender(funcionario.getId(), this);
-        telaVender.setVisible(true);
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void itemHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemHistoricoActionPerformed

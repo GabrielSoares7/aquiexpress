@@ -1,8 +1,9 @@
 package telas;
 
-import codigos.AcaoTela;
+import outros.AcaoTela;
 import dao.ClienteDAO;
 import dao.FuncionarioDAO;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -63,15 +64,24 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
         btCadastro.setForeground(new java.awt.Color(254, 254, 254));
         btCadastro.setText("Cadastrar");
         btCadastro.setBorder(null);
-        btCadastro.setOpaque(true);
         btCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btCadastroActionPerformed(evt);
             }
         });
 
-        tfLogin.setText("gabrielsoares");
+        tfLogin.setText("gabrielfun");
         tfLogin.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        tfLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfLoginActionPerformed(evt);
+            }
+        });
+        tfLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                tfLoginKeyPressed(evt);
+            }
+        });
 
         btSair.setBackground(new java.awt.Color(24, 117, 209));
         btSair.setForeground(new java.awt.Color(245, 127, 23));
@@ -102,60 +112,55 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lbLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
+                        .addComponent(lbLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE))
                     .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbSenha)
+                            .addComponent(lbLogin))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelLayout.createSequentialGroup()
-                                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanelLayout.createSequentialGroup()
-                                        .addComponent(lbLogin)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelLayout.createSequentialGroup()
-                                                .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addComponent(tfLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
-                                        .addComponent(radioFun)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(radioCliente)))
+                                .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btSair))
-                            .addGroup(jPanelLayout.createSequentialGroup()
-                                .addComponent(lbSenha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(10, 10, 10)))
+                                .addComponent(btCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelLayout.createSequentialGroup()
+                                    .addComponent(radioFun)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(radioCliente))
+                                .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(26, 26, 26)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btSair)
+                .addGap(16, 16, 16))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addComponent(lbLogo)
+                .addGap(1, 1, 1)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioFun)
+                    .addComponent(radioCliente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbLogin)
+                    .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbSenha)
+                    .addComponent(tfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
+                .addGap(8, 8, 8)
                 .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btSair))
-                    .addGroup(jPanelLayout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(radioFun)
-                            .addComponent(radioCliente))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbLogin)
-                            .addComponent(tfLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbSenha)
-                            .addComponent(tfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
-                        .addGap(8, 8, 8)
-                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+                    .addComponent(btLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btSair)
+                .addGap(16, 16, 16))
         );
 
         getContentPane().add(jPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-8, 0, 390, 280));
@@ -164,24 +169,26 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastroActionPerformed
-        if(radioFun.isSelected()) {
+
             String senha = "123";
             JPasswordField entradaSenha = new JPasswordField();
-            JOptionPane.showMessageDialog(null, entradaSenha, "Digite a senha padrão", 1);
+            JOptionPane.showMessageDialog(null, entradaSenha, "Administrador, digite a senha!", 1);
             String cmp = entradaSenha.getText();
             if(cmp.equals(senha)) {
-                setVisible(false);
-                TelaCadastroFuncionario cadastroFuncionario 
-                        = new TelaCadastroFuncionario(this);
+                if(radioFun.isSelected()) {
+                    TelaCadastroFuncionario cadastroFuncionario 
+                            = new TelaCadastroFuncionario(this);
+                    setVisible(false);
+                }
+                else {
+                    TelaCadastroCliente telaCadastroCliente =
+                        new TelaCadastroCliente();
+                }
             }
             else {
                 JOptionPane.showMessageDialog(null, "Acesso Negado!!!", "Alerta", 0);
             }
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Você precisa está logado como "
-                    + "\nfuncionario para cadastrar um cliente!", "Alerta", 0);
-        }
+        
     }//GEN-LAST:event_btCadastroActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
@@ -216,6 +223,15 @@ public class TelaPrincipal extends JFrame implements AcaoTela{
     private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btSairActionPerformed
+
+    private void tfLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfLoginKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            btLoginActionPerformed(null);
+    }//GEN-LAST:event_tfLoginKeyPressed
+
+    private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfLoginActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
